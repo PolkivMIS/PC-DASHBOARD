@@ -84,8 +84,8 @@ body::before {
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: flex-start; /* Align icon + text to the left */
+  gap: 12px;
   font-family: 'Segoe UI', 'din-round', sans-serif;
   font-size: 15px;
   font-weight: 700;
@@ -95,7 +95,7 @@ body::before {
   outline: none;
   overflow: hidden;
   padding: 13px 16px;
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
   touch-action: manipulation;
   transform: translateZ(0);
@@ -139,10 +139,13 @@ body::before {
 
 /* Embedded Icon */
 .icon-gif {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
   transition: transform 0.3s ease;
 }
 
