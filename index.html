@@ -1,96 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Process Coordinator Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap">
+  <title>PC Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Low left Ripple Background -->
-  <div class="ripple-background">
-    <div class="circle xxlarge shade1"></div>
-    <div class="circle xlarge shade2"></div>
-    <div class="circle large shade3"></div>
-    <div class="circle medium shade4"></div>
-    <div class="circle small shade5"></div>
+  <header>
+    <h1>PC DASHBOARD</h1>
+  </header>
+
+  <div class="container">
+    <!-- Left sidebar -->
+    <div class="sidebar left">
+      <a class="button" href="#"
+         onclick="openSheet('https://docs.google.com/spreadsheets/d/12so3o5nh4KDC2tqb57qudFWtb8T8gKHMjufNi-x88Ik/edit?gid=204054895')">
+        <div><span>GPO (R.S. Trade)</span></div>
+      </a>
+
+      <a class="button" href="#"
+         onclick="openSheet('https://docs.google.com/spreadsheets/d/1_MxFVONbx1lx5bQSrtMrGz4_GZONPJlyUNb_LaX4L6o/edit?gid=785912789')">
+        <div><span>GPO (B.S. Retails)</span></div>
+      </a>
+
+      <a class="button" href="#"
+         onclick="openSheet('https://docs.google.com/spreadsheets/d/1HFxlrRylkGRfiaNH9hakiZWaOcB8NbJAAkVp7l-8bCc/edit?gid=457050862')">
+        <div><span>SALES MASTER</span></div>
+      </a>
+
+      <a class="button" href="#"
+         onclick="openSheet('https://docs.google.com/spreadsheets/d/1qUB7gJz8__HBnCTNTzuCbgzNTxkYYPQO74YA5gh2l7E/edit?gid=2062403752')">
+        <div><span>SHOP-in-SHOP</span></div>
+      </a>
+
+      <a class="button" href="#"
+         onclick="openSheet('https://docs.google.com/spreadsheets/d/13K5MocwlttfQ7ziLHmDNTE32GK6c2DdSL-R92m-s5pY/edit?gid=1206496448')">
+        <div><span>COLLECTION DATA</span></div>
+      </a>
+
+      <a class="button" href="#"
+         onclick="openSheet('https://docs.google.com/spreadsheets/d/1byeM1rkUkeFAq_VgqQQuOr_lzPBmLY52LiE7PshpkjA/edit?gid=1905609983')">
+        <div><span>CHECKLIST</span></div>
+      </a>
+
+      <a class="button" href="#"
+         onclick="openSheet('https://docs.google.com/spreadsheets/d/1hzRpwGhPUN96lj_ZVh0S7ymygilcT3aRmu1pXhUdrHY/edit?gid=0')">
+        <div><span>EXPENSE FMS</span></div>
+      </a>
+    </div>
+
+    <!-- Center preview -->
+    <div class="preview" id="preview">
+      <iframe id="previewFrame"></iframe>
+    </div>
   </div>
-
-  <!-- Up right Ripple Background -->
-  <div class="ripple-background">
-    <div class="rcircle rxxlarge rshade1"></div>
-    <div class="rcircle rxlarge rshade2"></div>
-    <div class="rcircle rlarge rshade3"></div>
-    <div class="rcircle rmedium rshade4"></div>
-    <div class="rcircle rsmall rshade5"></div>
-  </div>
-
-  <!-- Animated Header -->
-  <div class="top-box">
-    <h1>Process Coordinator Dashboard</h1>
-  </div>
-
-  <!-- Button Grid -->
-  <div class="button-grid">
-    <button class="button-19" onclick="openSheet('https://docs.google.com/spreadsheets/d/12so3o5nh4KDC2tqb57qudFWtb8T8gKHMjufNi-x88Ik/edit?pli=1&gid=204054895')">
-      <img src="icons\RS.gif" alt="PO icon" class="icon-gif" />
-      R.S.TRADE (Good Receive PO)
-    </button>
-
-    <button class="button-19" onclick="openSheet('https://docs.google.com/spreadsheets/d/1_MxFVONbx1lx5bQSrtMrGz4_GZONPJlyUNb_LaX4L6o/edit?pli=1&gid=785912789')">
-      <img src="icons\BS.gif" alt="PO icon" class="icon-gif" />
-      B.S.RETAILS (Good Receive PO)
-    </button>
-
-    <button class="button-19" onclick="openSheet('https://docs.google.com/spreadsheets/d/1HFxlrRylkGRfiaNH9hakiZWaOcB8NbJAAkVp7l-8bCc/edit?pli=1&gid=457050862')">
-      <img src="icons\SALE.gif" alt="Sales icon" class="icon-gif" />
-      SALES MASTER
-    </button>
-
-    <!-- Placeholder buttons -->
-    <button class="button-19" onclick="openSheet('https://docs.google.com/spreadsheets/d/1qUB7gJz8__HBnCTNTzuCbgzNTxkYYPQO74YA5gh2l7E/edit?gid=0#gid=0')">
-      <img src="icons\SHOP.gif" alt="Audit icon" class="icon-gif" />
-      SHOP-in-SHOP
-    </button>
-
-    <button class="button-19" onclick="openSheet('https://docs.google.com/spreadsheets/d/13K5MocwlttfQ7ziLHmDNTE32GK6c2DdSL-R92m-s5pY/edit?gid=1206496448#gid=1206496448')">
-      <img src="icons\SALE.gif" alt="Audit icon" class="icon-gif" />
-      COLLECTION SHEET
-    </button>
-
-    <button class="button-19" onclick="openSheet('https://docs.google.com/spreadsheets/d/1byeM1rkUkeFAq_VgqQQuOr_lzPBmLY52LiE7PshpkjA/edit?gid=1905609983#gid=1905609983')">
-      <img src="icons\Checklist.gif" alt="Audit icon" class="icon-gif" />
-      OPERATION CHECKLIST
-    </button>
-
-    <button class="button-19" onclick="openSheet('https://docs.google.com/spreadsheets/d/1hzRpwGhPUN96lj_ZVh0S7ymygilcT3aRmu1pXhUdrHY/edit?gid=0#gid=0')">
-      <img src="icons\TRAVEL EXPENSE.gif" alt="Audit icon" class="icon-gif" />
-      EXPENSE FMS
-    </button>
-
-    <button class="button-19" onclick="openSheet('https://docs.google.com/spreadsheets/d/your-link-4')">
-      <img src="icons\PLACEHOLDER.gif" alt="Audit icon" class="icon-gif" />
-      PLACEHOLDER SHEET
-    </button>
-
-    <button class="button-19" onclick="openSheet('https://docs.google.com/spreadsheets/d/your-link-4')">
-      <img src="icons\PLACEHOLDER.gif" alt="Audit icon" class="icon-gif" />
-      PLACEHOLDER SHEET
-    </button>
-  </div>
-
-  <!-- Script to open sheets -->
-  <script>
-    function openSheet(url) {
-      window.open(url, '_blank');
-    }
-  </script>
 </body>
 </html>
-
-
-
-
-
-
-
