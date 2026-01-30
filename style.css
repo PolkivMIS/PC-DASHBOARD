@@ -60,9 +60,9 @@ header .title {
 .sidebar {
   flex: 0 0 13rem;               /* fixed base width */
   max-width: 20%;                /* responsive cap */
-  min-width: 10rem;              /* don’t collapse too far */
+  min-width: 15rem;              /* don’t collapse too far */
   background-image: url("images/FLOWER3.jpg");
-  background-size: cover;
+  background-size: 50%;
   background-position: center;
   background-repeat: repeat;
 
