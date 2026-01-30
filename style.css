@@ -8,32 +8,61 @@ html, body {
 }
 
 header {
+  display: flex;                     /* enable flexbox */
+  justify-content: space-between;    /* logo left, title center, gif right */
+  align-items: center;               /* vertical centering */
   background: rgb(37 174 214);
   background-image: url("images/BIRD.gif"); /* path to your GIF */
-  background-size: 25%;       /* ensures the GIF fills the header */
-  background-repeat: no-repeat; /* prevents tiling */
-  background-position: right;  /* centers the GIF */
+  background-size: 25%;
+  background-repeat: no-repeat;
+  background-position: right center; /* keep GIF on right side */
   color: white;
-  text-align: center;
-  padding: 0.4rem;       /* reduced padding */
-  font-size: 1.1rem;     /* smaller font size */
+  padding: 0.4rem 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  line-height: 1.2;      /* tighter line spacing */
+  line-height: 1.2;
+}
+
+/* Logo container */
+header .logo {
+  height: 80px;       /* controls logo height */
+  width: auto;
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo image */
+header .logo img {
+  max-height: 100%;   /* never exceed container height */
+  max-width: 100%;    /* never exceed container width */
+  height: auto;
+  width: auto;
+  border-radius: 0%; /* optional: makes logo circular */
+}
+
+/* Title text stays centered */
+header .title {
+  flex: 1;
+  text-align: center;
 }
 
 .container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: nowrap;             /* prevent wrapping */
+  justify-content: flex-start;
   align-items: stretch;
-  height: calc(100vh - 2rem); /* adjusted for smaller header */
+  height: calc(100vh - 2rem);    /* adjusted for smaller header */
 }
-
 
 /* Sidebars */
 .sidebar {
-  flex: 0 0 13rem;              /* slightly wider sidebars */
+  flex: 0 0 13rem;               /* fixed base width */
+  max-width: 20%;                /* responsive cap */
+  min-width: 10rem;              /* don’t collapse too far */
   background-image: url("images/FLOWER3.jpg");
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: repeat;
 
@@ -41,11 +70,10 @@ header {
   flex-direction: column;
   gap: 0.75rem;
   padding: 0.75rem;
-  overflow-y: auto;
-  height: 100%;
+  overflow-y: auto;              /* allow vertical scrolling */
+  height: calc(100vh - 6.5rem);  /* slightly shorter than preview */
   box-sizing: border-box;
 }
-
 
 /* Fancy animated button */
 .button {
@@ -53,7 +81,7 @@ header {
   --stone-800: #292524;
   --yellow-400: #facc15;
 
-  font-size: 0.7rem;             /* slightly smaller text */
+  font-size: 0.7rem;
   cursor: pointer;
   position: relative;
   font-weight: bold;
@@ -120,7 +148,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem 1rem;          /* smaller padding */
+  padding: 0.6rem 1rem;
   gap: 0.25rem;
   filter: drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.25));
 }
@@ -136,24 +164,42 @@ header {
 
 /* Preview pane */
 .preview {
-  flex: 1;
+  flex: 1 1 auto;                /* take remaining space */
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 0.5rem;
+  justify-content: center;       /* center iframe */
+  align-items: center;           /* center iframe vertically */
+  padding: 0.5rem;               /* margin around iframe */
   background: linear-gradient(135deg, #f0f0f0, #d9e4f5);
+  height: calc(100vh - 6rem);    /* fills container height */
+  min-width: 0;                  /* allows iframe to shrink */
+  box-sizing: border-box;
 }
 
-/* Responsive iframe */
+/* Responsive iframe with margins */
 .preview iframe {
-  margin-top: 0px;
-  width: 100%;                   /* full width */
-  height: 90%;     /* adapt height to viewport */
+  width: calc(100% - 1rem);      /* leave margin inside preview */
+  height: calc(100% - 1rem);     /* leave margin inside preview */
   border: 1px solid #ccc;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
-
   zoom: 0.7;
 }
 
-
+/* Media query for smaller screens */
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    max-width: 100%;
+    flex: none;
+    height: auto;
+  }
+  .preview {
+    height: auto;
+  }
+  .preview iframe {
+    width: 100%;
+    height: 100%;
+  }
+}
