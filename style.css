@@ -35,8 +35,8 @@ header .logo {
 
 /* Logo image */
 header .logo img {
-  max-height: 70%;   /* never exceed container height */
-  max-width: 70%;    /* never exceed container width */
+  max-height: 100%;   /* never exceed container height */
+  max-width: 100%;    /* never exceed container width */
   height: auto;
   width: auto;
   border-radius: 0%; /* optional: makes logo circular */
@@ -203,5 +203,6 @@ header .title {
     height: 100%;
   }
 }
+
 
 
